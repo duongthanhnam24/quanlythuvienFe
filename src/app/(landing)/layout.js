@@ -1,13 +1,15 @@
 "use client";
+import "@/styles/globals.css";
+
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
+import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { GetDetailUser, refreshToken, axiosJWT, rf } from "@/service/user";
-import { useDispatch } from "react-redux";
 import jwtDecode from "jwt-decode";
 import { getToken, getUser } from "@/redux/features/counter/counterSlice";
 
-export default function LandingLayout({ children }) {
+export default function RootLayout({ children }) {
     const dispatch = useDispatch();
     const getDecode = () => {
         let tokkenStorage = localStorage.getItem("access_token");
@@ -47,10 +49,14 @@ export default function LandingLayout({ children }) {
         }
     }, [handleGetUser]);
     return (
-        <>
-            <Header />
-            <div className="mt-[56px]">{children}</div>
-            <Footer />
-        </>
+        <html lang="en">
+            <body>
+                <div className="mx-[300px]">
+                    <Header />
+                    {children}
+                </div>
+                <Footer />
+            </body>
+        </html>
     );
 }

@@ -1,3 +1,9 @@
+export const getProduct = async (id) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/product/${id}`);
+    const data = res.json();
+    return data;
+};
+
 export const getAllProduct = async (pageUi) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/product?page=${pageUi - 1}`);
     const data = res.json();
@@ -39,6 +45,13 @@ export const deleteSoft = async (id) => {
         {
             method: "DELETE",
         }
+    ).then((res) => res.json());
+    return data;
+};
+
+export const searhProduct = async (filter, search) => {
+    const data = await fetch(
+        `${process.env.NEXT_PUBLIC_API_APP_URL}/product/panigated/search${search}${filter}`
     ).then((res) => res.json());
     return data;
 };

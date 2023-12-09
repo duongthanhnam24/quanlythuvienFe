@@ -3,15 +3,15 @@ import { Button } from "../ui/button";
 function Pagination({ setPageUi, pageUi, page, totalPage, countProducts }) {
     return (
         <nav
-            className="flex items-center justify-between pt-4 sm:flex-col sm:space-y-4"
+            className="flex items-center justify-center pt-4 sm:flex-col sm:space-y-4"
             aria-label="Table navigation"
         >
-            <span className="text-sm font-normal text-gray-500 dark:text-gray-400 ">
+            {/* <span className="text-sm font-normal text-gray-500 dark:text-gray-400 ">
                 Showing{" "}
                 <span className="font-semibold text-gray-900 dark:text-white">
                     {page}-{totalPage} of {countProducts}
                 </span>
-            </span>
+            </span> */}
             <ul className="inline-flex -space-x-px text-sm h-8">
                 <li>
                     <Button

@@ -8,10 +8,15 @@
   box-shadow: 0.5px 0.5px 4px 0px #979191;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body{
     margin: 0;
     box-sizing: border-box;
     padding: 0;
+    
 }
 @layer base {
     :root {
@@ -91,18 +96,3 @@ body{
     text-align: center;
   }
 
-  .text {
-    font-size: 16px;
-    padding: 12px 32px;
-  }
-  .wrapper{
-    cursor: pointer;
-    position: relative;
-  }
-
-  .wrapper:hover .img {
-    opacity: 0.6;
-  }
-  .wrapper:hover .middle {
-    opacity: 1;
-  }
