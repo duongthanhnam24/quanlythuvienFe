@@ -21,10 +21,18 @@ function SideBar() {
             </Link>
             <DropdownMenuCheckboxes book />
             <DropdownMenuCheckboxes human />
-
-            <Button variant="" className="w-full flex justify-between">
-                Đăng Xuất <LogOut />
-            </Button>
+            <Link href={"/"}>
+                <Button
+                    variant=""
+                    className="w-full flex justify-between"
+                    onClick={() => {
+                        localStorage.clear();
+                    }}
+                >
+                    Đăng Xuất
+                    <LogOut />
+                </Button>
+            </Link>
         </section>
     );
 }

@@ -7,6 +7,9 @@ import { useSelector } from "react-redux";
 function Header() {
     const user = useSelector((state) => state.auth.user);
     const id = user?._id ?? "";
+    function clearToken() {
+        localStorage.clear();
+    }
     return (
         <section className="flex justify-between h-[50px] p-4 items-center">
             <Link href={"/landing"} className="text-3xl font-bold">
@@ -25,7 +28,7 @@ function Header() {
                 <div className="absolute bg-white top-[5%] sm:left-[40%] md:left-[73%] rounded-md box-shad shadow-lg shadow-indigo-500/40 hidden group-hover:block animate-fade-up animate-once animate-duration-[600ms]">
                     <Button variant="none" className="py-[15px] px-[20px] flex space-x-2">
                         <User />
-                        <Link href={"/profile"}>Thông tin tài khoản</Link>
+                        <Link href={"/user"}>Thông tin tài khoản</Link>
                     </Button>
                     {user?.isAdmin && (
                         <Button variant="none" className="py-[15px] px-[20px] flex space-x-2">
@@ -35,9 +38,9 @@ function Header() {
                     )}
                     <Button variant="none" className="py-[15px] px-[20px] flex space-x-2">
                         <LogOut />
-                        <a href={"/"} onClick={() => clearToken()}>
+                        <Link href={"/"} onClick={() => clearToken()}>
                             Đăng xuất
-                        </a>
+                        </Link>
                     </Button>
                 </div>
             </div>
