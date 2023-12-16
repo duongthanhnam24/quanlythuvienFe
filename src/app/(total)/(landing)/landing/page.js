@@ -1,9 +1,10 @@
 "use client";
 import Image from "next/image";
 
-import giangsinh from "../../../../public/img/NOEL-01.png";
-import thongbao1 from "@/../../public/img/thongbao1.png";
+import giangsinh from "@/../../public/img/NOEL-01.png";
 import thongbao2 from "@/../../public/img/thongbao2.png";
+import thongbao1 from "@/../../public/img/thongbao1.png";
+
 import thongbao3 from "@/../../public/img/thongbao3.png";
 import thongbao4 from "@/../../public/img/thongbao4.png";
 import { Search } from "lucide-react";

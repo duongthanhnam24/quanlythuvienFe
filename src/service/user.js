@@ -12,16 +12,13 @@ export const axiosJWT = axios.create();
 //     return data;
 // };
 
-// export const GetAllUser = async (token) => {
-//     const res = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/users/all-user`, {
-//         method: "GET",
-//         headers: {
-//             token: `beares ${token}`,
-//         },
-//     });
-//     const data = await res.json();
-//     return data;
-// };
+export const GetAllUser = async () => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/users/all-user`, {
+        method: "GET",
+    });
+    const data = await res.json();
+    return data;
+};
 
 export const GetDetailUser = async (id, access_token) => {
     try {
@@ -37,6 +34,13 @@ export const GetDetailUser = async (id, access_token) => {
     } catch (error) {
         console.log(error);
     }
+};
+
+export const Punish = async (id, key) => {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/users/punish/${id}/${key}`, {
+        method: "PATCH",
+    }).then((res) => res.json());
+    return data;
 };
 
 // export const refreshToken = async (refresh_token) => {

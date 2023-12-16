@@ -32,7 +32,8 @@ export function DropdownMenuCheckboxes({ book, human }) {
                         {human && <Link href={"/admin/signup"}>Thêm Người dùng</Link>}
                     </DropdownMenuCheckboxItem>
                     <DropdownMenuCheckboxItem>
-                        <Link href={"/admin/controller"}> Quản lý sách </Link>
+                        {book && <Link href={"/admin/controller"}> Quản lý sách </Link>}
+                        {human && <Link href={"/admin/user"}>Quản lý user</Link>}
                     </DropdownMenuCheckboxItem>
                 </DropdownMenuContent>
             </DropdownMenu>

@@ -6,9 +6,12 @@ import { useSelector } from "react-redux";
 
 function Header() {
     const user = useSelector((state) => state.auth.user);
+    const id = user?._id ?? "";
     return (
         <section className="flex justify-between h-[50px] p-4 items-center">
-            <h1 className="text-3xl font-bold">Thư Viện</h1>
+            <Link href={"/landing"} className="text-3xl font-bold">
+                Thư Viện
+            </Link>
             <a href="#noti">Bảng tin</a>
             <a href="#book">Kho sách</a>
             <a>Thông tin thư viện</a>
@@ -24,10 +27,12 @@ function Header() {
                         <User />
                         <Link href={"/profile"}>Thông tin tài khoản</Link>
                     </Button>
-                    <Button variant="none" className="py-[15px] px-[20px] flex space-x-2">
-                        <FolderCog />
-                        <Link href={"/admin/controller"}>Quản lý </Link>
-                    </Button>
+                    {user?.isAdmin && (
+                        <Button variant="none" className="py-[15px] px-[20px] flex space-x-2">
+                            <FolderCog />
+                            <Link href={"/admin/controller"}>Quản lý </Link>
+                        </Button>
+                    )}
                     <Button variant="none" className="py-[15px] px-[20px] flex space-x-2">
                         <LogOut />
                         <a href={"/"} onClick={() => clearToken()}>
@@ -36,7 +41,7 @@ function Header() {
                     </Button>
                 </div>
             </div>
-            <Link href={"/"}>
+            <Link href={`/book/${id}`}>
                 <BookOpenCheck />
             </Link>
         </section>

@@ -55,3 +55,29 @@ export const searhProduct = async (filter, search) => {
     ).then((res) => res.json());
     return data;
 };
+
+export const createOrder = async (id, item, time) => {
+    let items = {
+        name: item.name,
+        image: item.image,
+        type: item.type,
+        author: item.author,
+        _id: item._id,
+        dateBorrow: time,
+    };
+    const data = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/order/create/${id}`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(items),
+    }).then((res) => res.json());
+    return data;
+};
+
+export const getOrderUser = async (id) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/order/user-order/${id}`).then(
+        (res) => res.json()
+    );
+    return res;
+};

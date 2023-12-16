@@ -26,29 +26,26 @@ function FormSignUp() {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify(valueSubmit),
-        });
-        const result = await response.json().then((data) => {
-            setData(data);
-        });
-        // console.log(values);
-    }
-
-    if (data?.name) {
-        router.push("/admin/controller");
-        localStorage.setItem("access_token", data?.accToken);
-        localStorage.setItem("refresh_token", data?.refreshTok);
+        }).then((res) => res.json());
+        setData(response);
+        if (response.isAdmin) {
+            router.push("/admin/controller");
+            localStorage.setItem("access_token", response.accToken);
+            localStorage.setItem("refresh_token", response.refreshTok);
+        } else if (!response.isAdmin && !response.message) {
+            router.push("/landing");
+            localStorage.setItem("access_token", response.accToken);
+            localStorage.setItem("refresh_token", response.refreshTok);
+        }
     }
     if (data?.message) {
         return (
-            <div className="flex justify-center items-center h-8 text-white">
-                <h1>
-                    Wrong password.{" "}
-                    <a href={"/signin"} className="text-sky-400">
-                        Try again
-                    </a>{" "}
-                    or click Forgot password to reset it.
-                </h1>
-            </div>
+            <h1 className="text-center">
+                Wrong password.{" "}
+                <a href={"/"} className="text-sky-400 ">
+                    Try again
+                </a>{" "}
+            </h1>
         );
     }
     return (
@@ -65,6 +62,7 @@ function FormSignUp() {
                 className="p-2 border border-black rounded-md"
                 placeholder="Mật Khẩu"
                 name="password"
+                type="password"
                 onChange={(e) => handleValue(e.target)}
             />
             <Button
