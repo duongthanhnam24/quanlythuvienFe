@@ -1,6 +1,12 @@
 "use client";
 import DeleteBtn from "@/components/dialog/delete";
 import Searchh from "@/components/search/search";
+import Table from "@/components/table/table";
+import Tb from "@/components/tb/tb";
+import Td from "@/components/td/td";
+import Th from "@/components/th/th";
+import Thead from "@/components/thead/thead";
+import Tr from "@/components/tr/tr";
 import { Button } from "@/components/ui/button";
 import { GetAllUser, Punish } from "@/service/user";
 import Link from "next/link";
@@ -36,55 +42,55 @@ function UserController() {
             <div className=" border-solid border-b mb-4"></div>
 
             <Searchh handleChange={setSearch} />
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto min-h-[500px]">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" className="px-6 py-3 ">
+            <Table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto min-h-[500px]">
+                <Thead>
+                    <Tr>
+                        <Th scope="col" className="px-6 py-3 ">
                             Number
-                        </th>
-                        <th scope="col" className="px-6 py-3 ">
+                        </Th>
+                        <Th scope="col" className="px-6 py-3 ">
                             Tên
-                        </th>
-                        <th scope="col" className="px-6 py-3">
+                        </Th>
+                        <Th scope="col" className="px-6 py-3">
                             Mã sinh viên
-                        </th>
-                        <th scope="col" className="px-6 py-3">
+                        </Th>
+                        <Th scope="col" className="px-6 py-3">
                             Số điện thoại
-                        </th>
-                        <th scope="col" className="px-6 py-3">
+                        </Th>
+                        <Th scope="col" className="px-6 py-3">
                             Lớp
-                        </th>
-                        <th scope="col" className="px-6 py-3">
+                        </Th>
+                        <Th scope="col" className="px-6 py-3">
                             tình trạng
-                        </th>
-                        <th scope="col" className="px-6 py-3">
+                        </Th>
+                        <Th scope="col" className="px-6 py-3">
                             Số sách mượn
-                        </th>
+                        </Th>
 
-                        <th scope="col" className="px-6 py-3 ">
+                        <Th scope="col" className="px-6 py-3 ">
                             Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
+                        </Th>
+                    </Tr>
+                </Thead>
+                <Tb>
                     {user?.map((item, i) => {
                         return (
-                            <tr>
-                                <td className="px-6 py-4">{i + 1}</td>
+                            <Tr>
+                                <Td className="px-6 py-4">{i + 1}</Td>
                                 <th
                                     scope="row"
                                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                                 >
                                     {item.name}
                                 </th>
-                                <td className="px-6 py-4">{item.msv}</td>
+                                <Td className="px-6 py-4">{item.msv}</Td>
 
-                                <td className="px-6 py-4">{item.phoneNumber}</td>
-                                <td className="px-6 py-4">{item.class}</td>
-                                <td className="px-6 py-4">
+                                <Td className="px-6 py-4">{item.phoneNumber}</Td>
+                                <Td className="px-6 py-4">{item.class}</Td>
+                                <Td className="px-6 py-4">
                                     {" "}
                                     {item.punish ? "đã phạt" : "chưa bị phạt"}{" "}
-                                </td>
+                                </Td>
                                 <td className="py-4 ">
                                     <Link
                                         href={`/admin/user/orderuser/${item._id}`}
@@ -109,11 +115,11 @@ function UserController() {
                                         Phạt
                                     </Button>
                                 </td>
-                            </tr>
+                            </Tr>
                         );
                     })}
-                </tbody>
-            </table>
+                </Tb>
+            </Table>
             {/* <Pagination
                 setPageUi={setPageUi}
                 pageUi={pageUi}

@@ -2,8 +2,13 @@
 import DeleteBtn from "@/components/dialog/delete";
 import Pagination from "@/components/page/Pagination";
 import Searchh from "@/components/search/search";
-import { Button } from "@/components/ui/button";
-import { deleteSoft, getAllProduct, searhProduct } from "@/service/product";
+import Table from "@/components/table/table";
+import Tb from "@/components/tb/tb";
+import Td from "@/components/td/td";
+import Th from "@/components/th/th";
+import Thead from "@/components/thead/thead";
+import Tr from "@/components/tr/tr";
+import { searhProduct } from "@/service/product";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -15,7 +20,7 @@ function Controller() {
         const filter = search ? `&filter=${search}` : "";
         const searchFromPage = `?search=${pageUi - 1}`;
         console.log(
-            `${process.env.NEXT_PUBLIC_API_APP_URL}/product/panigated/search${search}${filter} 1111`
+            `${process.env.NEXT_PUBLIC_API_APP_URL}/product/panigated/search${search}${filter}`
         );
         const data = async () => {
             const result = await searhProduct(filter, searchFromPage);
@@ -23,8 +28,6 @@ function Controller() {
         };
         data();
     }, [search, pageUi]);
-    console.log(search);
-    console.log(book);
     if (!book) {
         return (
             <div className="flex justify-center items-center w-full min-h-[300px]">
@@ -44,48 +47,35 @@ function Controller() {
             <div className=" border-solid border-b mb-4"></div>
 
             <Searchh handleChange={setSearch} />
-            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto min-h-[500px]">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" className="px-6 py-3 ">
-                            Number
-                        </th>
-                        <th scope="col" className="px-6 py-3 ">
-                            Tên sách
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Tác giả
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Số lượng
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Thể loại
-                        </th>
+            <Table>
+                <Thead>
+                    <Tr>
+                        <Th>Number</Th>
+                        <Th>Tên sách</Th>
+                        <Th>Tác giả</Th>
+                        <Th>Số lượng</Th>
+                        <Th>Thể loại</Th>
 
                         <th scope="col" colSpan={2} className="px-6 py-3 ">
                             Action
                         </th>
-                    </tr>
-                </thead>
-                <tbody>
+                    </Tr>
+                </Thead>
+                <Tb>
                     {Products?.map((dataItem, i) => (
-                        <tr
-                            className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-cyan-200 dark:hover:bg-gray-600 cursor-pointer "
-                            key={i}
-                        >
-                            <td className="px-6 py-4">{i + 1}</td>
-                            <th
+                        <Tr key={i}>
+                            <Td>{i + 1}</Td>
+                            <Th
                                 scope="row"
                                 className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                                 key={dataItem.name}
                             >
                                 {dataItem.name}
-                            </th>
-                            <td className="px-6 py-4">{dataItem.author}</td>
-                            <td className="px-6 py-4">{dataItem.slot}</td>
+                            </Th>
+                            <Td>{dataItem.author}</Td>
+                            <Td>{dataItem.slot}</Td>
 
-                            <td className="px-6 py-4">{dataItem.type}</td>
+                            <Td>{dataItem.type}</Td>
 
                             <td className="py-4 ">
                                 <Link
@@ -99,19 +89,12 @@ function Controller() {
                                 </Link>
                             </td>
                             <td className="py-4 ">
-                                {/* <Button
-                                    variant="none"
-                                    className="px-4 py-2 text-white rounded-xl bg-red-500"
-                                    onClick={() => deleteSoft(dataItem._id)}
-                                >
-                                    Delete
-                                </Button> */}
                                 <DeleteBtn id={dataItem._id} />
                             </td>
-                        </tr>
+                        </Tr>
                     ))}
-                </tbody>
-            </table>
+                </Tb>
+            </Table>
             <Pagination
                 setPageUi={setPageUi}
                 pageUi={pageUi}
