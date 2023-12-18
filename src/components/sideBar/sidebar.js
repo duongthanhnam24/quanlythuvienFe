@@ -16,7 +16,7 @@ function SideBar() {
                 </h1>
             </div>
             <div className=" border-solid border-b mb-4"></div>
-            <Link href={"/landing"} className="m-4">
+            <Link href={"/"} className="m-4">
                 Tới trang chính
             </Link>
             <DropdownMenuCheckboxes book />

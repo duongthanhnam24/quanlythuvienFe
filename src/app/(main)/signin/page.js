@@ -1,12 +1,12 @@
 import React, { Suspense } from "react";
-import header from "../../public/img/sliderHeader.png";
+import header from "../../../../public/img/sliderHeader.png";
 import Image from "next/image";
 import FormSignUp from "@/components/signup/form";
 
 export default function Counter() {
     return (
         <>
-            <div className="relative bg-black">
+            <div className="relative bg-black ">
                 <Image
                     src={header}
                     alt="slider"
@@ -19,7 +19,7 @@ export default function Counter() {
                     </p>
                 </div>
             </div>
-            <div className="my-10">
+            <div className="my-10 min-h-[600px]">
                 <h2 className="text-center text-3xl font-bold py-4">Đăng nhập</h2>
                 <div className=" border border-solid border-b "></div>
                 <FormSignUp />

@@ -1,18 +1,18 @@
 "use client";
 import Image from "next/image";
 
-import giangsinh from "@/../../public/img/NOEL-01.png";
-import thongbao2 from "@/../../public/img/thongbao2.png";
-import thongbao1 from "@/../../public/img/thongbao1.png";
+import giangsinh from "../../../public/img/NOEL-01.png";
+import thongbao2 from "@../../public/img/thongbao2.png";
+import thongbao1 from "@../../public/img/thongbao1.png";
 
-import thongbao3 from "@/../../public/img/thongbao3.png";
-import thongbao4 from "@/../../public/img/thongbao4.png";
-import { Search } from "lucide-react";
+import thongbao3 from "@../../public/img/thongbao3.png";
+import thongbao4 from "@../../public/img/thongbao4.png";
 import { ClipboardList } from "lucide-react";
 import { useEffect, useState } from "react";
 import { searhProduct } from "@/service/product";
 import Pagination from "@/components/page/Pagination";
 import Link from "next/link";
+import Searchh from "@/components/search/search";
 function Landing() {
     const [pageUi, setPageUi] = useState(1);
     const [search, setSearch] = useState(null);
@@ -77,17 +77,7 @@ function Landing() {
                 <h2 className=" font-medium flex ">
                     <ClipboardList /> <span className="ml-3">Gía sách</span>
                 </h2>
-                <div className="flex   pl-2 rounded">
-                    <label className="flex items-center">Tìm kiếm</label>
-                    <input
-                        className="border border-black p-2 py-1 rounded ml-4"
-                        placeholder="Theo Tên, thể loại, tác giả, ..."
-                        onChange={(e) => setSearch(e.target.value)}
-                    />
-                    <button className="bg-black text-white px-4 py-2 rounded">
-                        <Search />
-                    </button>
-                </div>
+                <Searchh handleChange={setSearch} />
             </div>
             <div className="grid gird-row-4 grid-cols-4 gap-4 min-h-[700px]">
                 {!Products ? (

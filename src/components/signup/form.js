@@ -33,7 +33,7 @@ function FormSignUp() {
             localStorage.setItem("access_token", response.accToken);
             localStorage.setItem("refresh_token", response.refreshTok);
         } else if (!response.isAdmin && !response.message) {
-            router.push("/landing");
+            router.push("/");
             localStorage.setItem("access_token", response.accToken);
             localStorage.setItem("refresh_token", response.refreshTok);
         }

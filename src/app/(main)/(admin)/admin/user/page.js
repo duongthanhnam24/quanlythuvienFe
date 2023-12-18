@@ -1,5 +1,6 @@
 "use client";
 import DeleteBtn from "@/components/dialog/delete";
+import Searchh from "@/components/search/search";
 import { Button } from "@/components/ui/button";
 import { GetAllUser, Punish } from "@/service/user";
 import Link from "next/link";
@@ -8,14 +9,15 @@ import { toast } from "react-toastify";
 
 function UserController() {
     const [user, setUser] = useState();
+    const [search, setSearch] = useState(null);
     useEffect(() => {
+        const searchs = search ? `?search=${search}` : "";
         const data = async () => {
-            const res = await GetAllUser();
+            const res = await GetAllUser(searchs);
             return setUser(res);
         };
         data();
-    }, []);
-    console.log(user);
+    }, [search]);
     async function punish(id, key) {
         const data = await Punish(id, key);
         if (data.message === " successfully.") {
@@ -33,6 +35,7 @@ function UserController() {
             </div>
             <div className=" border-solid border-b mb-4"></div>
 
+            <Searchh handleChange={setSearch} />
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 table-auto min-h-[500px]">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
@@ -47,6 +50,9 @@ function UserController() {
                         </th>
                         <th scope="col" className="px-6 py-3">
                             Số điện thoại
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Lớp
                         </th>
                         <th scope="col" className="px-6 py-3">
                             tình trạng
@@ -72,7 +78,9 @@ function UserController() {
                                     {item.name}
                                 </th>
                                 <td className="px-6 py-4">{item.msv}</td>
+
                                 <td className="px-6 py-4">{item.phoneNumber}</td>
+                                <td className="px-6 py-4">{item.class}</td>
                                 <td className="px-6 py-4">
                                     {" "}
                                     {item.punish ? "đã phạt" : "chưa bị phạt"}{" "}

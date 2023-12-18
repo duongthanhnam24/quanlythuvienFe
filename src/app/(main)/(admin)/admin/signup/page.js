@@ -10,6 +10,7 @@ function Signup() {
         password: null,
         checkpassword: null,
         phone: null,
+        class: null,
     });
     const [data, setData] = useState();
 
@@ -66,6 +67,13 @@ function Signup() {
                     className="p-2 border border-black rounded-md"
                     placeholder="Nhập lại mật khẩu"
                     name="checkpassword"
+                    onChange={(e) => handleGetDataUser(e.target)}
+                />
+                <label>Lớp</label>
+                <input
+                    className="p-2 border border-black rounded-md"
+                    placeholder="LỚP"
+                    name="class"
                     onChange={(e) => handleGetDataUser(e.target)}
                 />
                 <label>Số điện thoại</label>

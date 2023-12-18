@@ -42,7 +42,7 @@ function ObectBook({ params }) {
     return (
         <section className=" m-4 min-h-[700px]">
             <div className="my-4">
-                <Link href={"/landing"} className="text-blue-600 underline">
+                <Link href={"/"} className="text-blue-600 underline">
                     Quay lại
                 </Link>
             </div>

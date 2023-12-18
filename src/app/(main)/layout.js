@@ -1,12 +1,12 @@
 "use client";
-import "@/styles/globals.css";
 
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { GetDetailUser, refreshToken, axiosJWT, rf } from "@/service/user";
-import jwtDecode from "jwt-decode";
+import Footer from "@/components/footer/footer";
+import Header from "@/components/header/header";
 import { getToken, getUser } from "@/redux/features/counter/counterSlice";
-import "react-toastify/dist/ReactToastify.css";
+import { GetDetailUser, axiosJWT, rf } from "@/service/user";
+import jwtDecode from "jwt-decode";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 export default function RootLayout({ children }) {
     const dispatch = useDispatch();
@@ -49,7 +49,13 @@ export default function RootLayout({ children }) {
     }, [handleGetUser]);
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body>
+                <section className="mx-[300px] ">
+                    <Header />
+                    {children}
+                </section>
+                <Footer />
+            </body>
         </html>
     );
 }

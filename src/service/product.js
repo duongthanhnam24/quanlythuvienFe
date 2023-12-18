@@ -10,10 +10,6 @@ export const getAllProduct = async (pageUi) => {
     return data;
 };
 
-export const getBestSeller = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/product/get-product/hot`);
-};
-
 export const createProduct = async (valueForm) => {
     const data = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/product/create-product`, {
         method: "POST",
