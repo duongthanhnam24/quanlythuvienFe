@@ -57,7 +57,6 @@ function ObectBook({ params }) {
             </div>
             <div className="flex justify-center space-x-4 mt-10">
                 <Button onClick={() => muon()}>Mượn Sách</Button>
-                <Button>Thêm vào ưa thích</Button>
             </div>
         </section>
     );
