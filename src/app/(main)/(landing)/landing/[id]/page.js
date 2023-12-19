@@ -35,7 +35,7 @@ function ObectBook({ params }) {
             toast.error(data.message, { theme: "dark", position: "top-center" });
         } else {
             toast.success("Mượn thành công", { theme: "dark", position: "top-center" });
-            window.location.reload();
+            // window.location.reload();
         }
     }
 

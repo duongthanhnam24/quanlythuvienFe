@@ -4,8 +4,6 @@ import "@/styles/globals.css";
 import { Provider } from "react-redux";
 import { persistor, store } from "@/redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 export default function RootLayout({ children }) {
     return (
@@ -16,7 +14,6 @@ export default function RootLayout({ children }) {
                         {children}
                     </PersistGate>
                 </Provider>
-                <ToastContainer />
             </body>
         </html>
     );

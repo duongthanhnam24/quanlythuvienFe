@@ -7,6 +7,8 @@ import Pagination from "@/components/page/Pagination";
 import Link from "next/link";
 import Searchh from "@/components/search/search";
 import LandingImg from "@/components/landing/langdingImg";
+import Footer from "@/components/footer/footer";
+import Header from "@/components/header/header";
 function Landing() {
     const [pageUi, setPageUi] = useState(1);
     const [search, setSearch] = useState(null);

@@ -8,10 +8,8 @@ import Tr from "@/components/tr/tr";
 import { getOrderUser } from "@/service/product";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-
 function OrderUser({ params }) {
     const [data, setData] = useState();
-
     useEffect(() => {
         const dataa = async (id) => {
             console.log(id, "hiiiii");
@@ -20,15 +18,15 @@ function OrderUser({ params }) {
         };
         dataa(params.id);
     }, []);
-    console.log(data);
+
     return (
         <section>
             <Link className="my-4 underline text-blue-300" href={"/admin/user"}>
                 Quay lại
             </Link>
 
-            <Table >
-                <Thead >
+            <Table>
+                <Thead>
                     <Tr>
                         <Th scope="col" className="px-6 py-3 ">
                             Number
@@ -51,11 +49,8 @@ function OrderUser({ params }) {
                 <Tb>
                     {data?.orderItems?.map((item, i) => {
                         return (
-                            <Tr
-                               
-                                key={i}
-                            >
-                                <Td className="px-6 py-4">{i + 1}</TD>
+                            <Tr key={i}>
+                                <Td className="px-6 py-4">{i + 1}</Td>
                                 <th
                                     scope="row"
                                     className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"

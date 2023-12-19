@@ -61,6 +61,7 @@ export const createOrder = async (id, item, time) => {
         _id: item._id,
         dateBorrow: time,
     };
+
     const data = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/order/create/${id}`, {
         method: "POST",
         headers: {
