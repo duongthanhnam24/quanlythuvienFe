@@ -43,18 +43,16 @@ export const Punish = async (id, key) => {
     return data;
 };
 
-// export const refreshToken = async (refresh_token) => {
-//     try {
-//         const res = await axios.post(`${process.env.NEXT_PUBLIC_API_APP_URL}/refresh`, {
-//             headers: {
-//                 refresh: `${refresh_token}`,
-//             },
-//         });
-//         return res.data;
-//     } catch (error) {
-//         console.log(error);
-//     }
-// };
+export const updateUser = async (id, valueForm) => {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/users/update/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(valueForm),
+    }).then((res) => res.json());
+    return data;
+};
 export const rf = async (refresh_token) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/refresh`, {
         method: "POST",

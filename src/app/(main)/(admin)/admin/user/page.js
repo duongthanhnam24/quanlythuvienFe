@@ -124,12 +124,9 @@ function UserController() {
                                     >
                                         Phạt
                                     </Button>
-                                    <Button
-                                        className="px-4 py-2 text-white rounded-xl bg-blue-500"
-                                        onClick={() => punish(item._id, false)}
-                                    >
+                                    <Button className="px-4 py-2 text-white rounded-xl bg-blue-500">
                                         {" "}
-                                        Sửa
+                                        <Link href={`/admin/user/add/${item._id}`}>Sửa</Link>
                                     </Button>
                                     <Button
                                         className="px-4 py-2 text-white rounded-xl bg-red-500"
