@@ -65,3 +65,10 @@ export const rf = async (refresh_token) => {
     const data = await res.json();
     return data;
 };
+
+export const deletes = async (id) => {
+    const data = await fetch(`${process.env.NEXT_PUBLIC_API_APP_URL}/users/move/trash/${id}`, {
+        method: "DELETE",
+    }).then((res) => res.json());
+    return data;
+};

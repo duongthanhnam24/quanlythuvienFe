@@ -25,8 +25,6 @@ function Landing() {
         };
         data();
     }, [search, pageUi]);
-    console.log(search);
-    console.log(book);
     if (!book) {
         return (
             <div className="flex justify-center items-center w-full min-h-[300px]">
@@ -44,30 +42,30 @@ function Landing() {
             <section className="">
                 <LandingImg />
                 <div className="my-2 bg-[#e2e2e2] p-4 flex justify-between" id="book">
-                    <h2 className=" font-medium flex ">
+                    <h2 className=" font-medium flex items-center">
                         <ClipboardList /> <span className="ml-3">Gía sách</span>
                     </h2>
                     <Searchh handleChange={setSearch} />
                 </div>
-                <div className="grid gird-row-4 grid-cols-4 gap-4 min-h-[700px]">
+                <div className="grid gird-row-4 grid-cols-4 gap-4 min-h-[700px] sm:grid-row2 sm:grid-cols-2">
                     {!Products ? (
                         <section>....loading</section>
                     ) : (
-                        Products.map((item, i) => {
+                        Products?.map((item, i) => {
                             return (
-                                <Link href={`/landing/${item._id}`} key={i}>
+                                <Link href={`/landing/${item?._id}`} key={i}>
                                     <div className="flex flex-col  items-center relative">
                                         <img
-                                            src={item.image}
+                                            src={item?.image}
                                             className="w-[200px] h-[250px] object-cover"
                                         />
-                                        <h4>{item.name}</h4>
-                                        <p>{item.type}</p>
+                                        <h4>{item?.name}</h4>
+                                        <p>{item?.type}</p>
 
-                                        <p>{item.author}</p>
+                                        <p>{item?.author}</p>
 
-                                        {item.slot <= 0 && (
-                                            <div className="absolute top-[40%] left-[37%] items-center justify-center bg-red-500 px-2 py-1 rounded">
+                                        {item?.slot <= 0 && (
+                                            <div className="absolute top-1/2 ml-[50%] translate-x-[-60%] items-center justify-center bg-red-500 px-2 py-1 rounded">
                                                 <h1 className="text-white font-bold">Hết Hàng</h1>
                                             </div>
                                         )}

@@ -11,12 +11,16 @@ function Header() {
         localStorage.clear();
     }
     return (
-        <section className="flex justify-between h-[50px] p-4 items-center">
-            <Link href={"/"} className="text-3xl font-bold">
+        <section className="flex justify-between h-[50px] p-4 items-center sm:p-0 sm:justify-around">
+            <Link href={"/"} className="text-3xl font-bold sm:text-xl">
                 Thư Viện
             </Link>
-            <a href="#noti">Bảng tin</a>
-            <a href="#book">Kho sách</a>
+            <a href="/#noti" className="sm:hidden">
+                Bảng tin
+            </a>
+            <a href="/#book" className="sm:hidden">
+                Kho sách
+            </a>
             <Link href={"/noiquy"}>Thông tin thư viện</Link>
             {user ? (
                 <div className="group">

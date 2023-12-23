@@ -20,9 +20,9 @@ function LandingImg() {
                     <ClipboardList /> <span className="ml-3">Tin Mới Nhất</span>
                 </h2>
             </div>
-            <div className="flex space-x-3">
+            <div className="flex space-x-3 sm:flex-col sm:space-x-0 sm:p-3 sm:space-y-4">
                 <div className="">
-                    <Image src={thongbao1} className=" object-cover w-[652px] h-[312px]" />
+                    <Image src={thongbao1} className=" object-cover w-[652px] h-[312px] " />
                 </div>
                 <div className="flex flex-col space-y-1">
                     <div className="flex space-x-4 text-xl text-justify  ">

@@ -8,7 +8,7 @@ import Th from "@/components/th/th";
 import Thead from "@/components/thead/thead";
 import Tr from "@/components/tr/tr";
 import { Button } from "@/components/ui/button";
-import { GetAllUser, Punish } from "@/service/user";
+import { GetAllUser, Punish, deletes } from "@/service/user";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
@@ -33,6 +33,16 @@ function UserController() {
             toast.error("không thành công", { theme: "dark", position: "top-center" });
         }
         return data;
+    }
+    async function destroy(id) {
+        const datas = await deletes(id);
+        console.log(datas);
+        if (datas.message == "successful") {
+            toast.success(" thành công", { theme: "dark", position: "top-center" });
+            window.location.reload();
+        } else {
+            toast.error("không thành công", { theme: "dark", position: "top-center" });
+        }
     }
     return (
         <section className=" h-full">
@@ -113,6 +123,19 @@ function UserController() {
                                         onClick={() => punish(item._id, true)}
                                     >
                                         Phạt
+                                    </Button>
+                                    <Button
+                                        className="px-4 py-2 text-white rounded-xl bg-blue-500"
+                                        onClick={() => punish(item._id, false)}
+                                    >
+                                        {" "}
+                                        Sửa
+                                    </Button>
+                                    <Button
+                                        className="px-4 py-2 text-white rounded-xl bg-red-500"
+                                        onClick={() => destroy(item._id)}
+                                    >
+                                        Xóa
                                     </Button>
                                 </td>
                             </Tr>

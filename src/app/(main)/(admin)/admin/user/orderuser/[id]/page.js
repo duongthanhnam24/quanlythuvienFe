@@ -8,14 +8,19 @@ import Tr from "@/components/tr/tr";
 import { getOrderUser } from "@/service/product";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { io } from "socket.io-client";
 function OrderUser({ params }) {
     const [data, setData] = useState();
+
     useEffect(() => {
+        const socket = io("http://localhost:5000");
         const dataa = async (id) => {
-            console.log(id, "hiiiii");
             const res = await getOrderUser(id);
             return setData(res);
         };
+        socket.on("order", (data) => {
+            setData(data);
+        });
         dataa(params.id);
     }, []);
 

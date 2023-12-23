@@ -67,21 +67,18 @@ function Book({ params }) {
                 <tbody>
                     {data?.orderItems?.map((item, i) => {
                         return (
-                            <Tr
-                                className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-cyan-200 dark:hover:bg-gray-600 cursor-pointer "
-                                key={i}
-                            >
-                                <Td className="px-6 py-4">{i + 1}</Td>
+                            <Tr key={i}>
+                                <Td>{i + 1}</Td>
                                 <th
                                     scope="row"
-                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white sm:px-1 text-center"
                                 >
                                     {item.name}
                                 </th>
-                                <Td className="px-6 py-4">{item.author}</Td>
+                                <Td>{item.author}</Td>
 
-                                <Td className="px-6 py-4">{item.type}</Td>
-                                <Td className="px-6 py-4">{item.dateBorrow}</Td>
+                                <Td>{item.type}</Td>
+                                <Td>{item.dateBorrow}</Td>
 
                                 <Td className="py-4 ">
                                     <Button

@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body>
-                <section className="mx-[300px] ">{children}</section>
+                <section className="mx-[300px] sm:mx-0 ">{children}</section>
             </body>
         </html>
     );

@@ -11,6 +11,7 @@ function Admin() {
         type: null,
         author: null,
         slot: null,
+        position: null,
     });
     function handleInput(e) {
         setNewBook((prevState) => ({
@@ -67,6 +68,13 @@ function Admin() {
                     className="p-2 border border-black rounded-md w-[500px]"
                     placeholder="Số lượng"
                     name="slot"
+                    onChange={(e) => handleInput(e.target)}
+                />
+                <label className="mt-4 mb-2">Vị trí</label>
+                <input
+                    className="p-2 border border-black rounded-md w-[500px]"
+                    placeholder="Vị trí"
+                    name="position"
                     onChange={(e) => handleInput(e.target)}
                 />
                 <Button

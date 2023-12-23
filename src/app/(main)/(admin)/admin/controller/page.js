@@ -52,6 +52,7 @@ function Controller() {
                     <Tr>
                         <Th>Number</Th>
                         <Th>Tên sách</Th>
+                        <Th>Gía sách</Th>
                         <Th>Tác giả</Th>
                         <Th>Số lượng</Th>
                         <Th>Thể loại</Th>
@@ -72,6 +73,7 @@ function Controller() {
                             >
                                 {dataItem.name}
                             </Th>
+                            <Td>{dataItem.position}</Td>
                             <Td>{dataItem.author}</Td>
                             <Td>{dataItem.slot}</Td>
 
